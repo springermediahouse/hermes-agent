@@ -177,4 +177,5 @@ RUN mkdir -p /opt/data
 VOLUME [ "/opt/data" ]
 
 ENTRYPOINT [ "/init", "/opt/hermes/docker/main-wrapper.sh" ]
-CMD [ ]
+# Configured default CMD to "server" so it runs continuously in headless container environments
+CMD [ "server" ]
