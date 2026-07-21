@@ -3,4 +3,4 @@ dashboard:
   port: 8080
   basic_auth:
     username: "springermedia"
-    password_hash: "$pbkdf2-sha256$29000$N8X1K39aG7zL0qP2$v4sP8kM9zQ1wX2yR3tU4vW5xY6zA7bC8"
+    password: "Springer@28"
