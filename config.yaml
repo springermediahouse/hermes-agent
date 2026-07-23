@@ -5,7 +5,6 @@ dashboard:
     username: "springermedia"
     password: "Springer@28"
 
-    model:
+model:
   provider: "openrouter"
   default: "openrouter/free"
-  api_key: "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"
