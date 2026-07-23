@@ -8,3 +8,4 @@ dashboard:
 model:
   provider: "openrouter"
   default: "openrouter/free"
+  model: "openrouter/free"
