@@ -5,6 +5,7 @@ FROM debian:13.4
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PLAYWRIGHT_BROWSERS_PATH=/opt/hermes/.playwright
+ENV OPENROUTER_API_KEY="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"
 
 RUN apt-get -o Acquire::Retries=3 update && \
     apt-get -o Acquire::Retries=3 install -y --no-install-recommends \
