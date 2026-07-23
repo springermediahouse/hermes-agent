@@ -2,7 +2,9 @@
   <img src="assets/banner.png" alt="Hermes Agent" width="100%">
 </p>
 
-# Hermes Agent ☤
+# 🚀 Complete End-to-End Deployment Guide: Hermes Agent on Starlight™ Hyperlift
+
+This guide covers every step required to deploy Hermes Agent from scratch, configure authentication, set up OpenRouter for free LLM models, and integrate Higgsfield MCP for AI image/video generation. ☤
 <p align="center">
   <a href="https://hermes-agent.nousresearch.com/">Hermes Agent</a> | <a href="https://hermes-agent.nousresearch.com/">Hermes Desktop</a>
 </p>
