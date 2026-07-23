@@ -1,6 +1,6 @@
 🚀 Complete End-to-End Deployment Guide: Hermes Agent on Starlight™ Hyperlift
 
-This guide covers every step required to deploy Hermes Agent from scratch, configure authentication, set up OpenRouter for free LLM models, and integrate Higgsfield MCP for AI image/video generation.
+This guide covers every step required to deploy Hermes Agent from scratch, configure authentication, set up OpenRouter for free LLM models, and integrate Higgsfield MCP + creative skills for AI image/video/design generation.
 📌 Phase 1: Set Up OpenRouter (LLM Provider)
 
     Go to openrouter.ai and sign up for an account.
@@ -17,6 +17,7 @@ Create or update the following 2 files at the root of your GitHub repository (sp
 File 1: config.yaml
 
 Create config.yaml at the root of the project:
+YAML
 
 dashboard:
   host: "0.0.0.0"
@@ -28,13 +29,14 @@ dashboard:
 model:
   provider: "openrouter"
   default: "openrouter/free"
-  api_key: "sk-or-v1-YOUR_OPENROUTER_API_KEY_HERE" # Replace with your key from Phase 1
+  model: "openrouter/free"
 
-  💡 Note: Hermes automatically hashes the plaintext password in memory upon bootup.
+    💡 Note: Hermes automatically hashes the plaintext password in memory upon bootup.
 
 File 2: Dockerfile
 
 Create or update Dockerfile at the root of the project:
+Dockerfile
 
 FROM ghcr.io/astral-sh/uv:0.11.6-python3.13-trixie@sha256:b3c543b6c4f23a5f2df22866bd7857e5d304b67a564f4feab6ac22044dde719b AS uv_source
 FROM node:22-bookworm-slim@sha256:7af03b14a13c8cdd38e45058fd957bf00a72bbe17feac43b1c15a689c029c732 AS node_source
@@ -43,6 +45,7 @@ FROM debian:13.4
 ENV PYTHONUNBUFFERED=1
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PLAYWRIGHT_BROWSERS_PATH=/opt/hermes/.playwright
+ENV OPENROUTER_API_KEY="sk-or-v1-YOUR_OPENROUTER_API_KEY_HERE"
 
 RUN apt-get -o Acquire::Retries=3 update && \
     apt-get -o Acquire::Retries=3 install -y --no-install-recommends \
@@ -157,17 +160,16 @@ VOLUME [ "/opt/data" ]
 ENTRYPOINT [ "/init", "/opt/hermes/docker/main-wrapper.sh" ]
 CMD [ "gateway", "run" ]
 
-
 📌 Phase 3: Commit & Deploy on Starlight™ Hyperlift
 
     Open your terminal in your project directory and commit changes to GitHub:
-
+    Bash
 
     git add config.yaml Dockerfile
-git commit -m "Configure Hermes deployment and OpenRouter auth"
-git push origin main
+    git commit -m "Configure Hermes deployment and OpenRouter auth"
+    git push origin main
 
-Log into Starlight™ Hyperlift Manager.
+    Log into Starlight™ Hyperlift Manager.
 
     Select your repository (springermediahouse/hermes-agent) and branch (main).
 
@@ -194,9 +196,23 @@ Log into Starlight™ Hyperlift Manager.
     Sign up or log into higgsfield.ai.
 
     In the Hermes Dashboard web terminal, run the following command to link Higgsfield via Model Context Protocol:
+    Bash
 
     hermes mcp add higgsfield https://mcp.higgsfield.ai
 
     Test your integration by typing:
 
-    "Generate a cinematic video prompt of a futuristic landscape using Higgsfield."
+        "Generate a cinematic video prompt of a futuristic landscape using Higgsfield."
+
+📌 Phase 6: Bulk Install Creative, Design & Ad Skills
+
+Run this command in the Hermes web terminal to equip all essential creative design, infographic, pitch deck, and humanizing skills at once:
+Bash
+
+hermes skills install official/creative/claude-design && \
+hermes skills install official/creative/baoyu-infographic && \
+hermes skills install official/creative/popular-web-designs && \
+hermes skills install official/creative/excalidraw && \
+hermes skills install official/creative/sketch && \
+hermes skills install official/creative/humanizer && \
+hermes skills install official/creative/songwriting-and-ai-music
